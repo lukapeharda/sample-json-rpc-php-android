@@ -1,0 +1,8 @@
+<h1>Via XMLRPC</h1>
+<?php if (count($this->data) > 0):?>
+<ul>
+	<?php foreach ($this->data as $row):?>
+	<li><?php echo $this->escape($row['number'])?> - <?php echo $this->escape($row['title'])?>, <?php echo $this->escape($row['datetime'])?></li>
+	<?php endforeach;?>
+</ul>
+<?php endif; ?>

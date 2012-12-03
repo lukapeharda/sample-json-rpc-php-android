@@ -1,0 +1,34 @@
+<html>
+<head>
+	
+<?php 
+    echo $this->headScript()
+    	->appendFile($this->baseUrl('/js/jquery-1.3.min.js'))
+    	->appendFile($this->baseUrl('/js/json2.js'))
+    	->appendFile($this->baseUrl('/js/jquery.zend.jsonrpc.js'));
+?>
+	<script type="text/javascript"> 
+	$(document).ready(function(){
+		var testClient = jQuery.Zend.jsonrpc({url: '<?php echo $this->serverUrl; ?>'});
+
+		var data1 = testClient.cf.test();
+		if ('' != data1) {
+			$('#result1').html(data1);
+		}
+
+		/*var data2 = testClient.cf.getData(<?php echo $this->dataNumber; ?>);
+		if ('' != data2) {
+			var tempHtml = '';
+			$.each(data2, function(i, item) {
+				tempHtml += item.number + '. ' + item.title + ' - ' + item.datetime + '<br />';
+			});
+			$('#result2').html(tempHtml);
+		}*/		
+	});
+	</script> 
+</head>
+<body>
+	<div id="result1"></div>
+	<div id="result2"></div>
+</body>
+</html>
